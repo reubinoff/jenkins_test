@@ -2,11 +2,13 @@ pipeline {
     agent { docker { image 'python:3.6' } }
     stages {
         stage('env') {
-            sh '''
-            virtualenv venv --distribute
-            . venv/bin/activate 
-            pip install requirements.txt
-            '''
+            steps {
+                sh '''
+                virtualenv venv --distribute
+                . venv/bin/activate 
+                pip install requirements.txt
+                '''
+            }
         }
         stage('build') {
             steps {
