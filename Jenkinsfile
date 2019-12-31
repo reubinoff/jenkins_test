@@ -26,8 +26,9 @@ pipeline {
                 """
             }
         }
-        stage('build') {
+        stage('run') {
             steps {
+                echo "Start"
                 sh
                 """
                 . venv/bin/activate 
