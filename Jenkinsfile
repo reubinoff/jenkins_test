@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('env') {
             steps {
-                tmpfolder = sh(returnStdout: true, script: 'mktemp -d -p /tmp')
-                sh "HOME=${tmpfolder} pwd"
+                sh "mkdir /tmp/moshe"
+                sh "HOME=/tmp/moshe pwd"
                 sh '''
                 python -m pip install --user virtualenv
                 python -m virtualenv venv --distribute
