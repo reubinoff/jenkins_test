@@ -26,14 +26,6 @@ pipeline {
                     }
                 }
             }
-        }
-        post {
-            always {
-                echo "Done!!"
-            }
-            cleanup {
-                script {clean_up()}
-            }
-        }       
+        }    
     }
 }
