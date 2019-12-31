@@ -1,9 +1,18 @@
 pipeline {
+
     agent { 
         docker {
             image "python:3.7"        
         } 
     }
+
+
+      environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
+    
     stages {
         stage('env') {
             steps {
