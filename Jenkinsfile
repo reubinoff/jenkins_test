@@ -7,16 +7,14 @@ pipeline {
     stages {
         stage('env') {
             steps {
-                if (fileExists('requirements.txt')) {
-                    tmpfolder = sh(returnStdout: true, script: 'mktemp -d -p /tmp')
-                    sh "HOME=${tmpfolder} pwd"
-                    sh '''
-                    python -m pip install --user virtualenv
-                    python -m virtualenv venv --distribute
-                    . venv/bin/activate 
-                    pip install requirements.txt
-                    '''
-                }
+                tmpfolder = sh(returnStdout: true, script: 'mktemp -d -p /tmp')
+                sh "HOME=${tmpfolder} pwd"
+                sh '''
+                python -m pip install --user virtualenv
+                python -m virtualenv venv --distribute
+                . venv/bin/activate 
+                pip install requirements.txt
+                '''
             }
         }
         stage('build') {
