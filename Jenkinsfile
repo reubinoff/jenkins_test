@@ -19,21 +19,11 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh "python --version"
                 sh
                 """
                 . venv/bin/activate 
                 python start_test.py
                 """
-                timeout(time: 1, unit: 'MINUTES') {
-                    retry(5) {
-                        sh
-                        """
-                        . venv/bin/activate 
-                        python is_test_done.py
-                        """
-                    }
-                }
             }
         }    
     }
