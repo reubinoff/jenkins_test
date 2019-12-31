@@ -8,8 +8,7 @@ pipeline {
         stage('env') {
             steps {
                 sh '''
-                sudo -H python -m pip install --user virtualenv
-                virtualenv venv --distribute
+                python -m virtualenv venv --distribute
                 . venv/bin/activate 
                 pip install requirements.txt
                 '''
