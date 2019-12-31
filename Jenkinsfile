@@ -1,5 +1,10 @@
 pipeline {
-    agent { docker { image 'python:3.6' } }
+    agent { 
+        docker {
+            label "docker && linux" 
+            image "python:3.7"        
+        } 
+    }
     stages {
         stage('env') {
             steps {
@@ -22,5 +27,13 @@ pipeline {
                 }
             }
         }
+        post {
+            always {
+                echo "Done!!"
+            }
+            cleanup {
+                script {clean_up()}
+            }
+        }       
     }
 }
