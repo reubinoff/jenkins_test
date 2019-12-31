@@ -29,8 +29,7 @@ pipeline {
         stage('run') {
             steps {
                 echo "Start"
-                sh
-                """
+                sh """
                 . venv/bin/activate 
                 python start_test.py
                 """
