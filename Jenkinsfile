@@ -8,6 +8,7 @@ pipeline {
         stage('env') {
             steps {
                 sh '''
+                python -m pip install --user virtualenv
                 python -m virtualenv venv --distribute
                 . venv/bin/activate 
                 pip install requirements.txt
@@ -28,7 +29,7 @@ pipeline {
     }
     post { 
         always { 
-            echo 'I will always say Hello again!'
+            echo 'Stop everything!'
         }
     }
 }
