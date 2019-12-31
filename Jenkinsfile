@@ -4,6 +4,7 @@ pipeline {
         stage('env') {
             steps {
                 sh '''
+                pip install virtualenv
                 virtualenv venv --distribute
                 . venv/bin/activate 
                 pip install requirements.txt
