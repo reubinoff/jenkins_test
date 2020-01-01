@@ -49,6 +49,33 @@ pipeline {
                         """
                     }
                 }
+                stage('suite c') {
+                    steps {
+                        echo "Start"
+                        sh """
+                        . venv/bin/activate 
+                        python start_test.py
+                        """
+                    }
+                }
+                stage('suite d') {
+                    steps {
+                        echo "Start"
+                        sh """
+                        . venv/bin/activate 
+                        python start_test.py
+                        """
+                    }
+                }
+                stage('suite e') {
+                    steps {
+                        echo "Start"
+                        sh """
+                        . venv/bin/activate 
+                        python start_test.py
+                        """
+                    }
+                }
         }    
     }
     }
