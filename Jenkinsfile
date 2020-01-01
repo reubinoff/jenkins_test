@@ -15,6 +15,11 @@ pipeline {
 
     
     stages {
+        steps {
+            withEnv(["HOME=${env.WORKSPACE}"]) {
+                sh 'pip install --user virtualenv'
+            }
+        }
         stage('env') {
             steps {
                 sh """
