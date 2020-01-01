@@ -10,6 +10,8 @@ pipeline {
       environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
+        PYENV_HOME=$WORKSPACE'/.pyenv/'
+
     }
 
     
@@ -17,7 +19,6 @@ pipeline {
         stage('env') {
             steps {
                 sh """
-                PYENV_HOME=$WORKSPACE/.pyenv/
                 if [ -d $PYENV_HOME ]; then
                     rm -rf $PYENV_HOME
                 fi
