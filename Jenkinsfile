@@ -19,21 +19,16 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip install --user virtualenv'
-                    sh 'python WebChecker.py'
+                      sh """
+                            python -m pip install --user virtualenv
+                            python -m virtualenv venv --distribute
+                            . venv/bin/activate 
+                            pip install requirements.txt
+                        """
                 }
             }
         }
         
-        stage('env') {
-            steps {
-                sh """
-                python -m pip install --user virtualenv
-                python -m virtualenv venv --distribute
-                . venv/bin/activate 
-                pip install requirements.txt
-                """
-            }
-        }
         stage('run') {
             steps {
                 echo "Start"
