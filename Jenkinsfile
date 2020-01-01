@@ -23,7 +23,7 @@ pipeline {
                             python -m pip install --user virtualenv
                             python -m virtualenv venv --distribute
                             . venv/bin/activate 
-                            pip install requirements.txt
+                            pip install -r requirements.txt
                         """
                 }
             }
