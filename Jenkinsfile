@@ -19,10 +19,7 @@ pipeline {
         stage('env') {
             steps {
                 sh """
-                if [ -d $PYENV_HOME ]; then
-                    rm -rf $PYENV_HOME
-                fi
-                virtualenv --no-site-packages $PYENV_HOME
+                virtualenv --no-site-packages venv
                 python -m pip install --user virtualenv
                 python -m virtualenv venv --distribute
                 . venv/bin/activate 
