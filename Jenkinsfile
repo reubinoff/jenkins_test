@@ -28,55 +28,32 @@ pipeline {
                 }
             }
         }
-        
+        stage('Create List') {
+            steps {
+                script {
+                    // you may create your list here, lets say reading from a file after checkout
+                    list = ["Test-1", "Test-2", "Test-3", "Test-4", "Test-5"]
+                }
+            }
+            post {
+                cleanup {
+                    cleanWs()
+                }
+            }
+        }
         stage('run') {
-             parallel {
-                 stage('suite a') {
-                    steps {
-                        echo "Start"
-                        sh """
-                        . venv/bin/activate 
-                        python start_test.py
-                        """
+             steps {
+                script {
+                    for(int i=0; i < list.size(); i++) {
+                        stage(list[i]){
+                            sh """
+                                . venv/bin/activate 
+                                python start_test.py
+                            """
+                        }
                     }
                 }
-                stage('suite b') {
-                    steps {
-                        echo "Start"
-                        sh """
-                        . venv/bin/activate 
-                        python start_test.py
-                        """
-                    }
-                }
-                stage('suite c') {
-                    steps {
-                        echo "Start"
-                        sh """
-                        . venv/bin/activate 
-                        python start_test.py
-                        """
-                    }
-                }
-                stage('suite d') {
-                    steps {
-                        echo "Start"
-                        sh """
-                        . venv/bin/activate 
-                        python start_test.py
-                        """
-                    }
-                }
-                stage('suite e') {
-                    steps {
-                        echo "Start"
-                        sh """
-                        . venv/bin/activate 
-                        python start_test.py
-                        """
-                    }
-                }
-        }    
+            }
     }
     }
     post { 
