@@ -18,7 +18,6 @@ pipeline {
         stage('env') {
             steps {
                 sh """
-                virtualenv --no-site-packages venv
                 python -m pip install --user virtualenv
                 python -m virtualenv venv --distribute
                 . venv/bin/activate 
