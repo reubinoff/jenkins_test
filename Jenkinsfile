@@ -15,11 +15,15 @@ pipeline {
 
     
     stages {
-        steps {
-            withEnv(["HOME=${env.WORKSPACE}"]) {
-                sh 'pip install --user virtualenv'
+        stage('test'){
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install --user virtualenv'
+                    sh 'python WebChecker.py'
+                }
             }
         }
+        
         stage('env') {
             steps {
                 sh """
