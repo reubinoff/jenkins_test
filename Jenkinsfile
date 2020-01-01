@@ -30,6 +30,8 @@ pipeline {
         }
         
         stage('run') {
+             parallel {
+                 stage('suite a') {
             steps {
                 echo "Start"
                 sh """
@@ -37,6 +39,16 @@ pipeline {
                 python start_test.py
                 """
             }
+             }
+             stage('suite a') {
+                       steps {
+                echo "Start"
+                sh """
+                . venv/bin/activate 
+                python start_test.py
+                """
+            }
+             }
         }    
     }
     post { 
