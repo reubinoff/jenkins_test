@@ -16,9 +16,12 @@ pipeline {
     stages {
         stage('env') {
             steps {
-                sh "mkdir /tmp/moshe"
-                sh "HOME=/tmp/moshe pwd"
                 sh """
+                PYENV_HOME=$WORKSPACE/.pyenv/
+                if [ -d $PYENV_HOME ]; then
+                    rm -rf $PYENV_HOME
+                fi
+                virtualenv --no-site-packages $PYENV_HOME
                 python -m pip install --user virtualenv
                 python -m virtualenv venv --distribute
                 . venv/bin/activate 
