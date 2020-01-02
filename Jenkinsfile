@@ -43,12 +43,10 @@ pipeline {
                     for(int i=0; i < 1000; i++) {
                         def t = "test " + Integer.toString(i)
                         stage(t){
-                            steps {
                                 sh """
                                     . venv/bin/activate 
                                     python start_test.py
                                 """
-                            }
                         }
                     }
                      }
