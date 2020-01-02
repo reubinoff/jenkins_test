@@ -39,15 +39,19 @@ pipeline {
         stage('run') {
              steps {
                 script {
+                     parallel {
                     for(int i=0; i < 1000; i++) {
-                        string t = "test " + i.toString()
+                        def t = "test " + i.toString()
                         stage(t){
-                            sh """
-                                . venv/bin/activate 
-                                python start_test.py
-                            """
+                            steps {
+                                sh """
+                                    . venv/bin/activate 
+                                    python start_test.py
+                                """
+                            }
                         }
                     }
+                     }
                 }
             }
     }
