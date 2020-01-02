@@ -10,8 +10,8 @@ import cloudshell.api.cloudshell_api as cs_api
 
 
 
-url = "https://verison-robot.azurewebsites.net/api/perfecto?code=x5u5GaCpIgGsw34YIYoo5HL/oWA6sIgTnReZKsurUdJisN3WXn3SDA=="
+url = "https://ynet.co.il"
 body = dict()
-res = requests.post(url, body)
+res = requests.get(url)
 assert(res.status_code == 200)
 
