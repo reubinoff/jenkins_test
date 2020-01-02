@@ -40,7 +40,7 @@ pipeline {
              steps {
                 script {
                     for(int i=0; i < 1000; i++) {
-                        stage(i){
+                        stage(i.toString()){
                             sh """
                                 . venv/bin/activate 
                                 python start_test.py
