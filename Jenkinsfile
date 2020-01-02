@@ -41,7 +41,7 @@ pipeline {
                 script {
                      parallel {
                     for(int i=0; i < 1000; i++) {
-                        def t = "test " + i.toString()
+                        def t = "test " + Integer.toString(i)
                         stage(t){
                             steps {
                                 sh """
