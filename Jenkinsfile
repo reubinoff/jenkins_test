@@ -39,8 +39,8 @@ pipeline {
         stage('run') {
              steps {
                 script {
-                    for(int i=0; i < list.size(); i++) {
-                        stage(list[i]){
+                    for(int i=0; i < 1000; i++) {
+                        stage(i){
                             sh """
                                 . venv/bin/activate 
                                 python start_test.py
