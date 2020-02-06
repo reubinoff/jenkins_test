@@ -5,7 +5,7 @@ IP = "172.29.204.190"
 blueprint = "shared device0"
 session = cs_api.CloudShellAPISession(IP, 'admin', 'admin', 'Global')
 resourceDict = {}
-res = session.CreateImmediateReservation(blueprint, "admin",5)
+res = session.CreateImmediateReservation(blueprint, "admin",1)
 
 
 print(res)
