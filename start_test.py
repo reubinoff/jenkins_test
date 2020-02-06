@@ -2,7 +2,7 @@ import requests
 import cloudshell.api.cloudshell_api as cs_api
 
 IP = "172.29.204.190"
-blueprint = "EmptyCustomSetup 0"
+blueprint = "shared device0"
 session = cs_api.CloudShellAPISession(IP, 'admin', 'admin', 'Global')
 resourceDict = {}
 res = session.CreateImmediateReservation(blueprint, "admin",5)
