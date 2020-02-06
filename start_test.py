@@ -19,4 +19,4 @@ assert(res.status_code == 200)
 
 
 
-session.EndReservation(ID)
+# session.EndReservation(ID)
