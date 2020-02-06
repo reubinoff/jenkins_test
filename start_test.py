@@ -16,4 +16,4 @@ res = requests.get(url)
 assert(res.status_code == 200)
 
 
-session.EndReservation(res.Reservation.Id)
+session.EndReservation(res.Id)
