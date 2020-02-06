@@ -8,6 +8,8 @@ resourceDict = {}
 res = session.CreateImmediateReservation(blueprint, "admin",5)
 
 
+print(res)
+ID = res.Reservation.Id
 
 
 url = "https://ynet.co.il"
@@ -15,8 +17,6 @@ body = dict()
 res = requests.get(url)
 assert(res.status_code == 200)
 
-print(res)
-print(res.Reservation)
 
 
-session.EndReservation(res.Id)
+session.EndReservation(ID)
