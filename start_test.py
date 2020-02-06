@@ -1,12 +1,12 @@
 import requests
 import cloudshell.api.cloudshell_api as cs_api
 
-# IP = "52.177.135.165"
-# blueprint = "shared device11"
-# session = cs_api.CloudShellAPISession(IP, 'admin', 'admin', 'Global')
-# resourceDict = {}
-# res = session.CreateImmediateReservation(blueprint, "admin",5)
-# print(res)
+IP = "172.29.204.190"
+blueprint = "EmptyCustomSetup 0"
+session = cs_api.CloudShellAPISession(IP, 'admin', 'admin', 'Global')
+resourceDict = {}
+res = session.CreateImmediateReservation(blueprint, "admin",5)
+
 
 
 
@@ -15,3 +15,5 @@ body = dict()
 res = requests.get(url)
 assert(res.status_code == 200)
 
+
+session.EndReservation(res.Reservation.Id)
